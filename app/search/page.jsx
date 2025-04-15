@@ -3,6 +3,8 @@
 import axios from 'axios'
 import Link from 'next/link'
 import React, { useState } from 'react'
+import Navbar from '../components/Navbar'
+
 
 export default function Search() {
 
@@ -70,10 +72,46 @@ export default function Search() {
          </>
       )
  })
+  
+
+ const downloadCSV = (data) => {
+  const csvRows = [];
+  // Get the headers
+  const headers = ['Product Name', 'Product Company', 'Product Model', 'Product Price', 'Product Image'];
+  csvRows.push(headers.join(','));
+
+  // Format the data
+  data.forEach(product => {
+    const row = [
+      product.name,
+      product.cmp,
+      product.mdl,
+      product.prc,
+      product.imgname
+    ];
+    csvRows.push(row.join(','));
+  });
+
+  // Create a Blob from the CSV string
+  const csvString = csvRows.join('\n');
+  const blob = new Blob([csvString], { type: 'text/csv' });
+  const url = URL.createObjectURL(blob);
+
+  // Create a link element and trigger the download
+  const a = document.createElement('a');
+  a.setAttribute('href', url);
+  a.setAttribute('download', 'products.csv');
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+};
 
 
   return (
+
+    
     <div>
+      <Navbar/>
       <Link href='search'></Link>
 
       <h1 className="text-2xl font-bold mb-6 text-center">Search anything you want</h1>
@@ -103,9 +141,10 @@ export default function Search() {
     </thead>
     <tbody className="bg-white text-gray-800">
       {ans}
+      {res}
     </tbody>
   </table>
-
+{/* 
   <table className="min-w-[350px] border border-gray-300 rounded-lg shadow-md overflow-hidden">
     <thead className="bg-indigo-950 text-white">
       <tr>
@@ -117,10 +156,22 @@ export default function Search() {
       </tr>
     </thead>
     <tbody className="bg-white text-gray-800">
-      {res}
+     
     </tbody>
-  </table>
+  </table> */}
 </div>
+<button
+        className="mt-4 bg-green-500 text-white px-4 py-2 rounded"
+        onClick={() => downloadCSV([...show, ...show1])} // Combine both search results
+      >
+        Download Products
+      </button>
+      <button
+        className="mt-4 bg-blue-500 text-white px-4 py-2 rounded"
+        onClick={() => downloadPDF([...show, ...show1])} // Combine both search results
+      >
+        Download Products as PDF
+      </button>
     </div>
   )
 }

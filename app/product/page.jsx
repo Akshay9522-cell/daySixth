@@ -2,6 +2,8 @@
 import React, { useState } from 'react'
 import axios from 'axios'
 import Link from 'next/link'
+import  {useRouter}  from 'next/navigation';
+import { FaBars } from "react-icons/fa";
 
 export default function Product() {
           
@@ -46,17 +48,42 @@ export default function Product() {
           console.log(inp)
     
       }
+       const router=useRouter()
+         const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+         
+         function logOut(){
+             localStorage.clear()
+             router.push('/login')
+      
+         }
+         const toggleSidebar = () => {
+          setIsSidebarOpen(!isSidebarOpen);
+        };
         
   return (
     <>
+ 
+   <div className="flex items-center justify-between p-4 bg-gray-800">
+       <div className="flex items-center">
+         <FaBars className="text-white text-3xl ml-2" onClick={toggleSidebar} />
+         <h1 className="text-white text-xl ml-2">Dashboard</h1>
+       </div>
+       <h1 className='text-2xl font-bold text-center text-white'>Welcome🙏: <span className='text-blue-500 font-semibold'>{localStorage.getItem('name')}</span></h1>
+       {/*    */}
+       <button className="text-white text-2xl cursor-pointer" onClick={logOut}>Logout</button>
+     </div>
+<div>
+
+      </div>
          <div  className='w-60 h-80 bg-indigo-950 p-4 rounded-lg shadow-lg'>
         <ul className='text-white space-y-2'>
           <li><Link href='product'>Product</Link></li>
           <li><Link href='display'>Display</Link></li>
+          <li><Link href='contact'>Home</Link></li>
         
         </ul>
        </div> 
-       <div className="max-w-md m-auto p-6  bg-white rounded-lg shadow-md">
+       <div className="max-w-md m-auto p-6  relative bottom-80 bg-white rounded-lg shadow-md">
     <h2 className="text-xl font-semibold mb-4">Product Information</h2>
     
     <label className="block mb-2 text-gray-700">

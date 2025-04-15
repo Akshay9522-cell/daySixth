@@ -5,6 +5,7 @@ import React, { useState } from 'react'
 import axios from 'axios'
  
 import { useRouter } from 'next/navigation'
+import Navbar from '../components/Navbar'
 
 export default function page() {
       
@@ -28,6 +29,7 @@ export default function page() {
 
   return (
     <div>
+      <Navbar/>
       <Link href='login'></Link>
       
       <div className='flex flex-col justify-center items-center w-60 m-auto p-8 bg-white rounded-lg shadow-md'>
