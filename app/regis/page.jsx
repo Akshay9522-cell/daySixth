@@ -29,7 +29,7 @@ export default function Register() {
             const res = await axios.post(api, data);
             console.log(res.data);
             alert("Registration successful");
-            router('/login')
+            router.push('/login')
         } catch (error) {
             console.error("Error during registration:", error);
             alert("Registration failed");
