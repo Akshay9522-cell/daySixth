@@ -1,6 +1,6 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { ThemeProvider } from "@/app/components/theme-provider"
+//import { ThemeProvider } from "@/app/components/theme-provider"
 
 import Navbar from "./components/Navbar";
 
@@ -29,15 +29,9 @@ export default function RootLayout({ children }) {
        
         
 
-        <ThemeProvider
-            attribute="class"
-            defaultTheme="system"
-            enableSystem
-            disableTransitionOnChange
-          >
+        
             {children}
-          </ThemeProvider>
-
+         
       </body>
     </html>
   );

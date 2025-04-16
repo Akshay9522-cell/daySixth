@@ -54,6 +54,7 @@ export default function Product() {
          function logOut(){
              localStorage.clear()
              router.push('/login')
+             alert('logout successfully')
       
          }
          const toggleSidebar = () => {

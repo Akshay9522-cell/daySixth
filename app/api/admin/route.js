@@ -1,6 +1,7 @@
 import  adminModel from '@/app/model/admin'
 import mongodb from '@/app/dbConfig/mongodb'
 import { NextResponse } from 'next/server'
+import bcrypt from "bcryptjs";
 
 
 export  async function POST(req,res){
@@ -24,11 +25,13 @@ export  async function POST(req,res){
             })
         }
 
-        if(admin.password!=password){
-            NextResponse.status(400).send({
-                succeess:false,
-                message:'pasword is invalid'
-            })
+        const match=bcrypt.compare(password, admin.password)
+         
+        if(!match){
+           res.status(404).send({
+               success:false,
+               message:"password not  found"
+           })
         }
 
         return  NextResponse.json({admin})

@@ -10,7 +10,8 @@ export default function Navbar() {
             <li>Home</li>
             <li>Service</li>
             <li>About</li>
-            {/* <li><Link href='contact'>Contact</Link></li> */}
+        
+            <li><Link href='regis'>Register</Link></li>
             <li><Link href='login'>Login</Link></li>
             <li><Link href='search'>Search</Link></li>
          

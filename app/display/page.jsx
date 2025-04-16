@@ -71,11 +71,11 @@ export default function Display() {
         <ul className='text-white space-y-2'>
           <li><Link href='product'>Product</Link></li>
           <li><Link href='display'>Display</Link></li>
-          <li><Link href='home'>Home</Link></li>
+          <li><Link href='contact'>Home</Link></li>
         
         </ul>
        </div> 
-      <Link href='display'></Link>
+      
       <div className="flex flex-col md:flex-row gap-6 justify-center items-start relative bottom-81">
   <table className="min-w-[350px] border border-gray-300 rounded-lg shadow-md overflow-hidden">
     <thead className="bg-indigo-950 text-white">

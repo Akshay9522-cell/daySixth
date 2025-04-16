@@ -23,6 +23,7 @@ export default function page() {
             localStorage.setItem('name',res.data.admin.name)
             localStorage.setItem('email',res.data.admin.email)
             localStorage.setItem('id',res.data.admin._id)
+            alert('login successfully')
             router.push('/contact')
           })
       }
